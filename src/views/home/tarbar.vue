@@ -1,24 +1,23 @@
 <template>
   <div class="nav-container">
-    <div
-      class="nav-item"
-      :class="{ active: activeItem === '1' }"
-      @click="selectItem('1')"
-    >
-      <!-- <img src="tab-home.pgn" alt="Icon 1"> -->111
+    <div class="nav-item" @click="selectItem('1')" :class="{ active: activeItem === '1' }">
+      <div v-if="activeItem === '1'">
+        <div>
+          <SvgIcon name="chatActiveIcon" width="20px" height="20px"></SvgIcon>
+        </div>
+        <div>对话</div>
+      </div>
+      <div v-else>
+        <div>
+          <SvgIcon name="chatIcon" width="20px" height="20px"></SvgIcon>
+        </div>
+        <div>对话</div>
+      </div>
     </div>
-    <div
-      class="nav-item"
-      :class="{ active: activeItem === '2' }"
-      @click="selectItem('2')"
-    >
+    <div class="nav-item" @click="selectItem('2')">
       <!-- <img src="tab-order.png" alt="Icon 2"> -->222
     </div>
-    <div
-      class="nav-item"
-      :class="{ active: activeItem === '3' }"
-      @click="selectItem('3')"
-    >
+    <div class="nav-item" @click="selectItem('3')">
       <!-- <img src="tab-message.png" alt="Icon 3"> -->333
     </div>
   </div>
@@ -36,33 +35,29 @@ const selectItem = (item: string) => {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .nav-container {
   width: 100%;
   height: 100%;
-  background-color: rgb(245, 246, 248);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px 0;
-}
+  background-color: $base-background-color;
 
-.nav-item {
-  width: 40px;
-  height: 40px;
-  margin: 10px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
+  .nav-item {
+    width: 60px;
+    height: 35px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 12px
+  }
 
-.nav-item img {
-  width: 100%;
-  height: auto;
-}
-
-.nav-item.active {
-  border: 2px solid red;
+  .active {
+    font-weight: 800;
+  }
 }
 </style>

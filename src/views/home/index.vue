@@ -1,24 +1,20 @@
 <template>
   <div>
-    <div class="wrapper">
+    <div class="homeWrapper">
       <div class="mainBox">
-        <div class="boxHeader">
+        <div>
           <BoxHeader />
         </div>
         <div class="boxMain">
           <div class="bottomBox">
-            <el-row class="bottomBox">
-              <el-col :span="2">
-                <Tarbar @select="showContent" />
-              </el-col>
-              <el-col :span="22">
-                <div class="content-container">
-                  <Chat v-if="activeContent === '1'" />
-                  <Test v-if="activeContent === '2'" />
-                  <Test1 v-if="activeContent === '3'" />
-                </div>
-              </el-col>
-            </el-row>
+            <div>
+              <Tarbar @select="showContent" />
+            </div>
+            <div class="contentBox">
+              <Chat v-if="activeContent === '1'" />
+              <Test v-if="activeContent === '2'" />
+              <Test1 v-if="activeContent === '3'" />
+            </div>
           </div>
         </div>
       </div>
@@ -40,7 +36,11 @@ const showContent = (contentId: string) => {
 }
 </script>
 <style lang="scss" scoped>
-.wrapper {
+body {
+  font-size: $base-font-size;
+}
+
+.homeWrapper {
   width: 100vw;
   height: 100vh;
   padding: 0;
@@ -52,22 +52,25 @@ const showContent = (contentId: string) => {
   /* 垂直居中 */
 
   .mainBox {
-    width: 80vw;
-    height: 80vh;
-    border: 1px solid black;
+    width: 65vw;
+    height: 85vh;
+    min-height: 450px;
+    margin: 100px 0px;
     display: flex;
     flex-direction: column;
 
-    .boxHeader {
-      display: flex;
-      border: 1px solid black;
-      height: 40px;
-    }
-
     .boxMain {
       flex: 1;
+      height: calc(80vh - 50px);
+
       .bottomBox {
         height: 100%;
+        display: flex;
+
+        .contentBox {
+          height: 100%;
+          width: 100%;
+        }
       }
     }
   }
