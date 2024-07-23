@@ -1,5 +1,5 @@
 <template>
-  <div class="">我是头部</div>
+  <div>123</div>
 </template>
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
