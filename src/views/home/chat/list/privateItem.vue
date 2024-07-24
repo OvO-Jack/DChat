@@ -1,7 +1,7 @@
 <template>
-    <div class="itemBox">
+    <div class="itemBox" :class="{ active: active === true }">
         <div class="imgBox">
-            <img src="../../../../../public/证件照.jpg" alt="">
+            <img src="../../../../../public/9.jpg" alt="">
         </div>
         <div class="contentBox">
             <div class="headerBox">
@@ -19,7 +19,12 @@
 </template>
 <script setup lang="ts">
 import { ref, reactive } from "vue"
-
+defineProps({
+    active: {
+        type: Boolean,
+        default: false
+    }
+});
 
 
 
@@ -30,14 +35,13 @@ import { ref, reactive } from "vue"
     height: 60px;
     display: flex;
     font-size: 12px;
-    border-left: 3px solid orange;
 
     .imgBox {
         margin: auto 8px;
 
         img {
-            width: 40px;
-            height: 40px;
+            width: 40px !important;
+            height: 40px !important;
             border-radius: 50%;
         }
     }
@@ -71,7 +75,10 @@ import { ref, reactive } from "vue"
             }
         }
     }
+}
 
+.active {
+    border-left: 3px solid orange;
     background-color: rgb(248, 248, 248);
 }
 </style>

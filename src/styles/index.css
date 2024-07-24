@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Modern CSS Reset Tweaks
  * ================================================== */
@@ -242,7 +243,6 @@ a:hover {
 
 /* Make images easier to work with */
 img {
-  max-width: 100%;
   display: inline-block;
   vertical-align: middle;
   height: auto;
@@ -561,4 +561,15 @@ summary {
    * ========================================================================== */
 template {
   display: none;
+}
+
+@font-face {
+  font-family: '阿里妈妈刀隶体 Regular';
+  font-weight: 400;
+  src: url("//at.alicdn.com/wf/webfont/FKlZEIgUsY95/o7fetDkIlJB4.woff2") format("woff2"), url("//at.alicdn.com/wf/webfont/FKlZEIgUsY95/VoCnQpQAh8gg.woff") format("woff");
+  font-display: swap;
+}
+
+* {
+  font-family: '阿里妈妈刀隶体 Regular', Arial, sans-serif !important;
 }

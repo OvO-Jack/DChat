@@ -36,9 +36,10 @@ const selectItem = (activeItemName: string) => {
 </script>
 <style lang="scss" scoped>
 .categoryWrapper {
-    width: 120px;
+    width: 180px;
     height: 100%;
     border-right: 1px solid $base-background-color;
+    border-bottom: 1px solid $base-background-color;
     padding: 10px 10px;
     font-size: $base-font-size;
 

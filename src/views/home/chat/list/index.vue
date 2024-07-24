@@ -5,7 +5,7 @@
             <div>闪电</div>
         </div>
         <div class="mainBox">
-            <Item></Item>
+            <Item :active="true"></Item>
             <Item></Item>
             <Item></Item>
             <Item></Item>
@@ -16,13 +16,14 @@
 </template>
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import Item from './item.vue'
+import Item from './privateItem.vue'
 </script>
 <style lang="scss" scoped>
 .listWrapper {
-    width: 250px;
+    width: 360px;
     height: 100%;
     border-right: 1px solid $base-background-color;
+    border-bottom: 1px solid $base-background-color;
 
     .btnWrapper {
         width: 100%;

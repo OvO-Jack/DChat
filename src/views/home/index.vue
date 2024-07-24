@@ -60,6 +60,7 @@ body {
     flex-direction: column;
 
     .boxMain {
+      min-height: 420px;
       flex: 1;
       height: calc(80vh - 50px);
 
