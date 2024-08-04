@@ -1,7 +1,8 @@
 <template>
     <div class="itemBox" :class="{ active: active === true }">
         <div class="imgBox">
-            <img src="../../../../../public/9.jpg" alt="">
+            <el-avatar :size="40"
+                src="http://dchat-storage.oss-cn-hangzhou.aliyuncs.com/images/ab43ad55ffb3c90a3f81f5b9e97e676c.jpg"></el-avatar>
         </div>
         <div class="contentBox">
             <div class="headerBox">
@@ -38,12 +39,6 @@ defineProps({
 
     .imgBox {
         margin: auto 8px;
-
-        img {
-            width: 40px !important;
-            height: 40px !important;
-            border-radius: 50%;
-        }
     }
 
     .contentBox {

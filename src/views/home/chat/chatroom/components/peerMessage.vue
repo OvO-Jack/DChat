@@ -1,7 +1,7 @@
 <template>
     <div class="peerMessageWrapper">
         <div class="imgBox">
-            <img src="../../../../../../public/9.jpg" alt="">
+            <el-avatar :size="35" src="../../../../../public/9.jpg"></el-avatar>
         </div>
         <div class="textBox">
             琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽
@@ -24,12 +24,6 @@ import { ref, reactive } from "vue"
 
     .imgBox {
         margin-right: 10px;
-
-        img {
-            width: 35px !important;
-            height: 35px !important;
-            border-radius: 50%;
-        }
     }
 
     .textBox {

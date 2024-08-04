@@ -3,7 +3,7 @@
     <el-row justify="space-between" class="headerBox" style="width: 100%;">
       <el-col :span="6" class="avatarBox">
         <div style="display: flex; align-items: center;">
-          <el-avatar :size="35" />
+          <el-avatar :size="35" @click="clickAvatar" :src="userStore.userinfo.image" alt="头像" />
         </div>
       </el-col>
       <el-col :span="6">
@@ -17,6 +17,16 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { Search } from '@element-plus/icons-vue'
+import useUserStore from '@/store/modules/user'
+
+// 使用 store
+const userStore = useUserStore();
+
+// 头像编辑弹窗
+const clickAvatar = () => {
+  userStore.dialogVisibleCorpper(true)
+}
+
 
 const searchValue = ref('')
 

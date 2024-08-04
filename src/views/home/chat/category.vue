@@ -36,7 +36,6 @@ const selectItem = (activeItemName: string) => {
 </script>
 <style lang="scss" scoped>
 .categoryWrapper {
-    width: 180px;
     height: 100%;
     border-right: 1px solid $base-background-color;
     border-bottom: 1px solid $base-background-color;
@@ -44,7 +43,7 @@ const selectItem = (activeItemName: string) => {
     font-size: $base-font-size;
 
     .btnWrapper {
-        width: 100%;
+        width: 110px;
         display: flex;
         justify-content: space-between;
     }
@@ -54,6 +53,7 @@ const selectItem = (activeItemName: string) => {
     }
 
     .mainBox {
+        width: 110px;
         margin-top: 10px;
 
         li {

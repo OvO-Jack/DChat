@@ -1,15 +1,51 @@
-//统一管理咱们项目用户相关的接口
 import request from '@/utils/request'
-import type { sendResponseData } from './type'
+import type {
+  loginForm,
+  loginResponseData,
+  registerForm,
+  registerResponseData,
+  responseData,
+  headimgResponseData,
+  updateForm,
+} from './type'
 
-//项目用户相关的请求地址
-
+// 项目用户相关的请求地址
 enum API {
-  SEND_URL = 'sendSms',
+  LOGIN_URL = 'user/logins',
+  REGISTER_URL = 'user/register',
+  USERINFO_URL = 'user/userinfo',
+  HEADIMG_URL = 'user/headimg',
+  UPDATE_URL = 'user/update',
 }
 
-// //校验验证码
-// export const checkCode = (datas: checkCodeForm) =>
-//   loginRequest.get<any, sendResponseData>(
-//     `${API.CHECKCODE_URL}/${datas.phone}/${datas.code}`,
-//   )
+// 登录
+export const login = (data: loginForm): Promise<loginResponseData> =>
+  request
+    .post<loginResponseData>(API.LOGIN_URL, data)
+    .then((response) => response.data)
+
+// 注册
+export const register = (data: registerForm): Promise<registerResponseData> =>
+  request
+    .post<registerResponseData>(API.REGISTER_URL, data)
+    .then((response) => response.data)
+
+// 获取用户信息
+export const userinfo = (): Promise<responseData> =>
+  request.get<responseData>(API.USERINFO_URL).then((response) => response.data)
+
+// 上传用户头像
+export const headimg = (formData: FormData): Promise<headimgResponseData> =>
+  request
+    .post<responseData>(API.HEADIMG_URL, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then((response) => response.data)
+
+// 获取用户信息
+export const userInfoUpdate = (data: updateForm): Promise<responseData> =>
+  request
+    .post<responseData>(API.UPDATE_URL, data)
+    .then((response) => response.data)

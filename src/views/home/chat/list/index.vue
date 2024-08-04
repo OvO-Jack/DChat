@@ -5,28 +5,22 @@
             <div>闪电</div>
         </div>
         <div class="mainBox">
-            <Item :active="true"></Item>
-            <Item></Item>
-            <Item></Item>
-            <Item></Item>
-            <Item></Item>
-            <Item></Item>
+            <PrivateItem :active="true"></PrivateItem>
         </div>
     </div>
 </template>
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import Item from './privateItem.vue'
+import PrivateItem from './privateItem.vue'
 </script>
 <style lang="scss" scoped>
 .listWrapper {
-    width: 360px;
     height: 100%;
     border-right: 1px solid $base-background-color;
     border-bottom: 1px solid $base-background-color;
 
     .btnWrapper {
-        width: 100%;
+        width: 220px;
         display: flex;
         justify-content: space-between;
         padding: 10px 10px;
@@ -37,6 +31,8 @@ import Item from './privateItem.vue'
         margin: 0px 5px;
     }
 
-    .mainBox {}
+    .mainBox {
+        width: 220px;
+    }
 }
 </style>

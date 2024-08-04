@@ -7,7 +7,7 @@ import 'nprogress/nprogress.css'
 nprogress.configure({ showSpinner: false })
 //获取用户相关的小仓库内部token数据,去判断用户是否登录成功
 import useUserStore from './store/modules/user'
-import { SET_USERID, GET_USERID, REMOVE_USERID } from '@/utils/userid'
+import { GET_TOKEN } from '@/utils/token'
 import pinia from './store'
 const userStore = useUserStore(pinia)
 //全局守卫:项目当中任意路由切换都会触发的钩子
@@ -19,17 +19,17 @@ router.beforeEach(async (to: any, from: any, next: any) => {
   nprogress.start()
   //获取token,去判断用户登录、还是未登录
   //获取用户名字
-  const username = GET_USERID()
+  const token = GET_TOKEN()
   //用户登录判断
-  if (username) {
+  if (token) {
     //登录成功,访问login,不能访问,指向首页
     if (to.path == '/login') {
       next({ path: '/' })
     } else {
-      //登录成功访问其余六个路由(登录排除)
+      //登录成功访问其余路由(登录排除)
       try {
         //获取用户信息
-        await userStore.userInfo(GET_USERID())
+        await userStore.userInfo()
         next()
       } catch (error) {
         await userStore.loginOut()
@@ -38,7 +38,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
     }
   } else {
     //用户未登录判断
-    if (to.path == '/login') {
+    if (to.path == '/login' || to.path == '/register') {
       next()
     } else {
       next({ path: '/login', query: { redirect: to.path } })

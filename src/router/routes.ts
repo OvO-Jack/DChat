@@ -13,6 +13,18 @@ export const constantRoute: RouteRecordRaw[] = [
     component: () => import('@/views/home/index.vue'),
     name: 'home',
   },
+  {
+    //登录
+    path: '/login',
+    component: () => import('@/views/login/index.vue'),
+    name: 'login',
+  },
+  {
+    //登录
+    path: '/register',
+    component: () => import('@/views/register/index.vue'),
+    name: 'register',
+  },
 ]
 
 //任意路由

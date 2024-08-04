@@ -1,27 +1,48 @@
 <template>
     <div class="chatroomWrapper">
         <Header></Header>
-        <ChatItem></ChatItem>
-        <InputBox></InputBox>
+        <ChatItem :messages="messages" :username="username"></ChatItem>
+        <InputBox @sendMessage="sendMessage"></InputBox>
     </div>
 </template>
+
 <script setup lang="ts">
-import { ref, reactive } from "vue"
-import Header from './header.vue'
+import { ref, reactive, onMounted } from 'vue';
+// import io from 'socket.io-client';
+import Header from './header.vue';
 import ChatItem from "./privateItem.vue";
 import InputBox from "./inputBox.vue";
+import { Message } from './chat';
 
 
+const username = ref('赵敏');
+const messages = reactive<Message[]>([]); // 明确声明 messages 的类型
 
+onMounted(() => {
+    // socket.emit('online', username.value);
+    // socket.on('reply_private_chat', (msg: Message) => {
+    //     messages.push(msg);
+    // });
+});
+
+const sendMessage = (msg: string) => {
+    const params = {
+        sender: username.value,
+        receiver: '聂小倩', // 假设接收者为 user2
+        text: msg,
+    };
+    socket.emit('private_chat', params, (response: Message) => {
+        messages.push(response);
+    });
+};
 </script>
-<style lang="scss" scoped>
+
+<style scoped lang="scss">
 .chatroomWrapper {
-    width: 100%;
-    height: 100%;
-    min-height: 420px;
+    min-width: 450px;
+    display: flex;
+    flex-direction: column;
     border-right: 1px solid $base-background-color;
     border-bottom: 1px solid $base-background-color;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
 }
 </style>

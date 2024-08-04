@@ -27,6 +27,11 @@ app.use(pinia)
 import router from './router'
 app.use(router)
 //路由守卫
-// import './permisstion';
+import './permisstion.ts'
+
+//vue-cropper实现图片裁剪+上传功能
+import VueCropper from 'vue-cropper'
+import 'vue-cropper/dist/index.css'
+app.use(VueCropper)
 
 app.mount('#app')

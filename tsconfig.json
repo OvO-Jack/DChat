@@ -1,21 +1,20 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
   "compilerOptions": {
-    "noUnusedLocals": false,
-    "allowJs": true,
-    "baseUrl": "./", // 解析非相对模块的基地址，默认是当前目录
-    "paths": { //路径映射，相对于baseUrl
-      "@/*": [
-        "src/*"
-      ]
-    }
-  }
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "allowJs": true, // 允许 JavaScript 文件
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "jsx": "preserve", // 处理 JSX 语法
+    "types": ["vite/client", "vue"] // 包含 vue 类型定义
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue" // 确保包含 .vue 文件
+  ]
 }

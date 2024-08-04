@@ -19,15 +19,36 @@
         </div>
       </div>
     </div>
+
+    <!-- 引入头像编辑 -->
+    <ImgCorpper :dialogVisibleCorpper="dialogVisibleCorpper" @confirm="confirm"
+      @update:dialogVisibleCorpper="updateDialogVisibleCorpper" />
   </div>
 </template>
+
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, computed } from 'vue'
 import BoxHeader from './header.vue'
 import Tarbar from './tarbar.vue'
 import Chat from './chat/index.vue'
 import Test from './test/index.vue'
 import Test1 from './test1/index.vue'
+import useUserStore from '@/store/modules/user'
+
+// 使用 store
+const userStore = useUserStore()
+
+const dialogVisibleCorpper = computed(() => userStore.variable.dialogVisibleCorpper)
+
+// 更新弹窗显示状态
+const updateDialogVisibleCorpper = (value: boolean) => {
+  userStore.dialogVisibleCorpper(value)
+}
+
+// 头像编辑弹窗确认
+const confirm = () => {
+  userStore.dialogVisibleCorpper(false)
+}
 
 const activeContent = ref('1')
 
@@ -35,21 +56,19 @@ const showContent = (contentId: string) => {
   activeContent.value = contentId
 }
 </script>
+
 <style lang="scss" scoped>
 body {
   font-size: $base-font-size;
 }
 
 .homeWrapper {
-  width: 100vw;
   height: 100vh;
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
-  /* 水平居中 */
   align-items: center;
-  /* 垂直居中 */
 
   .mainBox {
     width: 65vw;

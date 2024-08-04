@@ -6,17 +6,21 @@
                     <div>表情</div>
                     <div>文件</div>
                 </div>
-                <textarea type="text"
-                    value="琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽琴崽崽"
-                    class="custom-scrollbar" />
+                <textarea type="text" class="custom-scrollbar" v-model="message" @keyup.enter="sendMessage" />
             </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
 import { ref, reactive } from "vue"
-
-
+const message = ref('');
+const emit = defineEmits(['sendMessage']);
+const sendMessage = () => {
+    if (message.value.trim() === '') return;
+    const msg = message.value;
+    message.value = '';
+    emit('sendMessage', msg);
+};
 
 
 </script>
