@@ -52,12 +52,11 @@ import { Plus, Minus, RefreshLeft, RefreshRight } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import 'vue-cropper/dist/index.css'
 import { VueCropper } from 'vue-cropper'
-import { ref, reactive, defineProps, defineEmits, getCurrentInstance } from 'vue'
+import { ref, reactive } from 'vue'
 import { headimg, userInfoUpdate } from '@/api/user'
 import useUserStore from '@/store/modules/user'
 const userStore = useUserStore()
-
-const props = defineProps({
+defineProps({
     dialogVisibleCorpper: {
         type: Boolean,
         default: false,
@@ -152,7 +151,6 @@ const determine = async () => {
         formData.append('headimg', dataURLtoBlob(previews.value.url));
 
         const res = await headimg(formData)
-        console.log(res);
 
         if (res.code === 200) {
             await userImgUpdate(res.data.filepath)

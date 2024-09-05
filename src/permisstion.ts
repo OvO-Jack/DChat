@@ -29,8 +29,15 @@ router.beforeEach(async (to: any, from: any, next: any) => {
       //登录成功访问其余路由(登录排除)
       try {
         //获取用户信息
-        await userStore.userInfo()
-        next()
+        if (
+          userStore.$state.userinfo._id &&
+          userStore.$state.userinfo.username
+        ) {
+          next()
+        } else {
+          await userStore.userInfo()
+          next()
+        }
       } catch (error) {
         await userStore.loginOut()
         next({ path: '/login', query: { redirect: to.path } })

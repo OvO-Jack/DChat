@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**
  * Modern CSS Reset Tweaks
  * ================================================== */
@@ -564,12 +563,12 @@ template {
 }
 
 @font-face {
-  font-family: '阿里妈妈刀隶体 Regular';
-  font-weight: 400;
-  src: url("//at.alicdn.com/wf/webfont/FKlZEIgUsY95/o7fetDkIlJB4.woff2") format("woff2"), url("//at.alicdn.com/wf/webfont/FKlZEIgUsY95/VoCnQpQAh8gg.woff") format("woff");
-  font-display: swap;
+  font-family: 'alifont';
+  src: url("@/assets/font/AlimamaFangYuanTiVF-Thin.ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-  font-family: '阿里妈妈刀隶体 Regular', Arial, sans-serif !important;
+  font-family: 'alifont' !important;
 }

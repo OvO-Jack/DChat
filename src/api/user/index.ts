@@ -7,6 +7,7 @@ import type {
   responseData,
   headimgResponseData,
   updateForm,
+  UserListResponse,
 } from './type'
 
 // 项目用户相关的请求地址
@@ -16,6 +17,7 @@ enum API {
   USERINFO_URL = 'user/userinfo',
   HEADIMG_URL = 'user/headimg',
   UPDATE_URL = 'user/update',
+  USERLIST_URL = 'user/userList',
 }
 
 // 登录
@@ -48,4 +50,10 @@ export const headimg = (formData: FormData): Promise<headimgResponseData> =>
 export const userInfoUpdate = (data: updateForm): Promise<responseData> =>
   request
     .post<responseData>(API.UPDATE_URL, data)
+    .then((response) => response.data)
+
+//获取用户列表信息
+export const getUserList = (): Promise<UserListResponse> =>
+  request
+    .get<UserListResponse>(API.USERLIST_URL)
     .then((response) => response.data)

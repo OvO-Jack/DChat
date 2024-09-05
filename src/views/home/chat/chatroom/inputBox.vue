@@ -6,24 +6,54 @@
                     <div>表情</div>
                     <div>文件</div>
                 </div>
-                <textarea type="text" class="custom-scrollbar" v-model="message" @keyup.enter="sendMessage" />
+                <textarea type="text" class="custom-scrollbar" v-model="message" @keyup.enter="handleSendMessage" />
             </div>
         </div>
     </div>
 </template>
+
 <script setup lang="ts">
-import { ref, reactive } from "vue"
+import { ref } from "vue"
+import { ElMessage } from 'element-plus'
+import { sendMessage } from "@/api/chat";
+import useWebSocketStore from '@/store/modules/socket'
+const webSocketStore = useWebSocketStore()
+import useUserStore from '@/store/modules/user';
+const userStore = useUserStore();
+import { useRoute } from 'vue-router'
+const $route = useRoute();
+
 const message = ref('');
-const emit = defineEmits(['sendMessage']);
-const sendMessage = () => {
+
+const handleSendMessage = async () => {
     if (message.value.trim() === '') return;
-    const msg = message.value;
-    message.value = '';
-    emit('sendMessage', msg);
-};
 
+    const messageData = {
+        senderId: userStore.userinfo._id,
+        senderUsername: userStore.userinfo.username,
+        receiverId: $route.params.userId as string,
+        receiverUsername: $route.query.username as string,
+        message: message.value.trim(),
+        timestamp: new Date().toISOString(),
+        status: 'SENT',
+        receiverDeviceId: $route.query.deviceid,
+    }
 
+    try {
+        await webSocketStore.sendMessage(messageData);
+        // await sendMessage({
+        //     receiverId: $route.params.userId as string,
+        //     message: message.value.trim(),
+        //     receiverDeviceId: $route.query.deviceid as string
+        // })
+        // 清空输入框
+        message.value = '';
+    } catch (error) {
+        ElMessage.error(error);
+    }
+}
 </script>
+
 <style lang="scss" scoped>
 .inputBox {
     height: 160px;

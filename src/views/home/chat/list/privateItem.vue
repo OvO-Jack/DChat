@@ -1,18 +1,20 @@
 <template>
     <div class="itemBox" :class="{ active: active === true }">
         <div class="imgBox">
-            <el-avatar :size="40"
-                src="http://dchat-storage.oss-cn-hangzhou.aliyuncs.com/images/ab43ad55ffb3c90a3f81f5b9e97e676c.jpg"></el-avatar>
+            <RedPoint :path="`chat.${userinfo.id}`" :value="unreadCount">
+                <el-avatar :size="40" :src="userinfo.image">
+                </el-avatar>
+            </RedPoint>
         </div>
         <div class="contentBox">
             <div class="headerBox">
-                <div class="title">实习生哈哈哈</div>
+                <div class="title">{{ userinfo.username }}</div>
                 <div class="time">10:44
                 </div>
             </div>
             <div class="bottomBox">
                 <div class="textBox">
-                    哈哈哈哈哈哈
+                    发送的消息
                 </div>
             </div>
         </div>
@@ -24,10 +26,18 @@ defineProps({
     active: {
         type: Boolean,
         default: false
+    },
+    userinfo: {
+        type: Object,
+        require: true
+    },
+    unreadCount: {
+        type: Number,
+        require: true
     }
 });
 
-
+const path = ref()
 
 </script>
 <style lang="scss" scoped>

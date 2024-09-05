@@ -8,8 +8,14 @@ export interface UserState {
     createAt: string
     image?: string
     _id: string
+    imServiceId?: string
+    deviceId?: string
   }
   variable: {
     dialogVisibleCorpper: boolean
   }
+}
+//聊天信息
+export interface ChatState {
+  badgeState: object
 }

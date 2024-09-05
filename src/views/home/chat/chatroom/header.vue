@@ -2,7 +2,7 @@
     <div class="headerWrapper">
         <div class="mainBox">
             <div class="leftBox">
-                <div class="title">实习生Di休闲娱乐</div>
+                <div class="title">{{ $route.query.username }}</div>
             </div>
             <div class="rightBox">
                 <div class="icon">
@@ -14,8 +14,8 @@
 </template>
 <script setup lang="ts">
 import { ref, reactive } from "vue"
-
-
+import { useRoute } from 'vue-router'
+const $route = useRoute()
 
 
 </script>

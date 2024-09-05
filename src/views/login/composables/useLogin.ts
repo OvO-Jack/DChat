@@ -6,8 +6,6 @@ import { loginFailResponse, loginFailResponseItem } from '@/api/user/type'
 import { SET_TOKEN } from '@/utils/token' // 根据实际项目路径调整
 import { useRouter } from 'vue-router'
 import useUserStore from '@/store/modules/user'
-
-// 使用 store
 const userStore = useUserStore()
 
 export function useLogin() {
@@ -55,7 +53,8 @@ export function useLogin() {
             userStore.dialogVisibleCorpper(true)
           }
 
-          router.push('/home')
+          //跳转路由
+          router.push('/home/chat/defaultRoom')
         } else {
           handleLoginFailure(res)
         }

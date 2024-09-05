@@ -99,3 +99,26 @@ export interface updateForm {
   phone?: string
   image?: string
 }
+
+//定义获取用户列表
+interface UserInfo {
+  id: string
+  username: string
+  email: string
+  image: string | null
+  deviceId?: string
+  imServiceId?: string
+}
+
+export interface UserWithUnreadCount {
+  userinfo: UserInfo
+  unreadCount: number
+  type: string
+}
+
+export interface UserListResponse {
+  code: number
+  msg: string
+  data: UserWithUnreadCount[]
+  time: string
+}

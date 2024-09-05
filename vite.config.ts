@@ -6,7 +6,7 @@ import path from 'path'
 export default defineConfig({
   server: {
     host: '127.0.0.1',
-    port: 8000,
+    port: 8080,
     proxy: {
       '/api': {
         target: 'http://localhost:3000', // 后端服务器的地址

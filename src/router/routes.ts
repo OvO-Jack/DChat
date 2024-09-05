@@ -5,13 +5,45 @@ export const constantRoute: RouteRecordRaw[] = [
   {
     //登录成功以后展示数据的路由
     path: '/',
-    redirect: '/home',
+    redirect: '/home/chat/defaultRoom',
   },
   {
     //登录
     path: '/home',
     component: () => import('@/views/home/index.vue'),
     name: 'home',
+    children: [
+      {
+        path: '',
+        redirect: 'chat',
+      },
+      {
+        path: 'chat',
+        component: () => import('@/views/home/chat/index.vue'),
+        name: 'chat',
+        children: [
+          {
+            path: '',
+            redirect: 'defaultRoom',
+          },
+          {
+            path: 'defaultRoom',
+            component: () => import('@/views/home/chat/chatroom/default.vue'),
+            name: 'defaultRoom',
+          },
+          {
+            path: 'chatroom/:userId',
+            component: () => import('@/views/home/chat/chatroom/index.vue'),
+            name: 'chatroom',
+          },
+        ],
+      },
+      {
+        path: 'people',
+        component: () => import('@/views/home/people/index.vue'),
+        name: 'people',
+      },
+    ],
   },
   {
     //登录

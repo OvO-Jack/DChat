@@ -8,13 +8,9 @@
         <div class="boxMain">
           <div class="bottomBox">
             <div>
-              <Tarbar @select="showContent" />
+              <Tarbar />
             </div>
-            <div class="contentBox">
-              <Chat v-if="activeContent === '1'" />
-              <Test v-if="activeContent === '2'" />
-              <Test1 v-if="activeContent === '3'" />
-            </div>
+            <router-view></router-view>
           </div>
         </div>
       </div>
@@ -27,13 +23,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import BoxHeader from './header.vue'
 import Tarbar from './tarbar.vue'
-import Chat from './chat/index.vue'
-import Test from './test/index.vue'
-import Test1 from './test1/index.vue'
 import useUserStore from '@/store/modules/user'
+import useWebSocketStore from '@/store/modules/socket'
+const webSocketStore = useWebSocketStore()
 
 // 使用 store
 const userStore = useUserStore()
@@ -49,12 +44,11 @@ const updateDialogVisibleCorpper = (value: boolean) => {
 const confirm = () => {
   userStore.dialogVisibleCorpper(false)
 }
+onMounted(() => {
+  // 建立 WebSocket 连接
+  webSocketStore.connect()
+})
 
-const activeContent = ref('1')
-
-const showContent = (contentId: string) => {
-  activeContent.value = contentId
-}
 </script>
 
 <style lang="scss" scoped>
@@ -71,8 +65,10 @@ body {
   align-items: center;
 
   .mainBox {
-    width: 65vw;
-    height: 85vh;
+    min-width: 800px;
+    min-height: 1200px;
+    width: 70vw;
+    height: 90vh;
     min-height: 450px;
     margin: 100px 0px;
     display: flex;

@@ -1,8 +1,10 @@
 export interface Message {
-  sender: string
-  receiver: string
-  text: string
-  createTime: string
-  senderPhoto?: string
-  senderPhotoNickname?: string
+  conversationId?: string
+  message: string
+  receiverId?: string
+  senderId?: string
+  senderUsername?: string
+  status?: string
+  timestamp?: string
+  _id?: string
 }

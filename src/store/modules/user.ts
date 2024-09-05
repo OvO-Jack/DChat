@@ -18,6 +18,8 @@ let useUserStore = defineStore('User', {
         updateAt: '',
         createAt: '',
         image: '',
+        imServiceId: '',
+        deviceId: '',
       },
       variable: {
         dialogVisibleCorpper: false,

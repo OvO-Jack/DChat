@@ -8,7 +8,8 @@
                 <p>Sign in to DChat</p>
             </div>
             <div class="form">
-                <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules">
+                <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules"
+                    @keyup.enter.native="submitForm(ruleFormRef)">
                     <el-form-item prop="account">
                         <label>Username or email address</label>
                         <el-input v-model="ruleForm.account" type="text" autocomplete="off" clearable />

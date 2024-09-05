@@ -3,7 +3,7 @@
     <el-row justify="space-between" class="headerBox" style="width: 100%;">
       <el-col :span="6" class="avatarBox">
         <div style="display: flex; align-items: center;">
-          <el-avatar :size="35" @click="clickAvatar" :src="userStore.userinfo.image" alt="头像" />
+          <el-avatar :size="40" @click="clickAvatar" :src="userStore.userinfo.image" alt="头像" />
         </div>
       </el-col>
       <el-col :span="6">
@@ -36,6 +36,7 @@ const searchValue = ref('')
   display: flex;
   height: 50px;
   background-color: $base-background-color;
+  border-radius: 10px 10px 0px 0px;
 
   .headerBox {
 
